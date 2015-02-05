@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = Model.Title + "-郑雪平的博客";
+}
+@model NZBlog.Entity.BlogDetail
+
+<section class="article">
+    <div class="row">
+        <h4><a>@Model.Title</a></h4>
+        <div class="posthead">
+            <div class="col-xs-10"><a><span class="glyphicon glyphicon-time" aria-hidden="true"></span> @Model.CreatTimes.ToString("yyyy-MM-dd")</a></div>
+            @*<div class="col-xs-2 list-right"><a><span class="glyphicon glyphicon-time"></span> @Model.CreatTimes.ToString("yyyy-MM-dd")</a></div>*@
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            @MvcHtmlString.Create(Model.BlogContent)
+        </div>
+        <p>
+            <span class="glyphicon glyphicon-tags tags"></span> 
+            <span class="cat-item">
+            @foreach (var lable in Model.Lables.Split('|'))
+            {
+                <a>@lable</a>
+            }
+            </span>
+            <div class="bdsharebuttonbox right-float" data-tag="share_1">
+                <a class="bds_mshare" data-cmd="mshare"></a>
+                <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+                <a class="bds_tsina" data-cmd="tsina"></a>
+                <a class="bds_baidu" data-cmd="baidu"></a>
+                <a class="bds_weixin" data-cmd="weixin"></a>
+                <a class="bds_tqq" data-cmd="tqq"></a>
+                <a class="bds_more" data-cmd="more">更多</a>
+                <a class="bds_count" data-cmd="count"></a>
+            </div>
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="1" data-title="如何在EF中直接运行SQL命令" data-url="/blog/1"></div>
+    <!-- 多说评论框 end -->
+</section>
+@Html.Partial("_Aticle_Under")

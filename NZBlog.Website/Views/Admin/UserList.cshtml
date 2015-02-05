@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+}
+@section Header
+{
+    
+}
+<div id="toolsBar" class="toolbar">
+    <input type="text" name="UserName" class="form-control input-Search" placeholder="请输入用户名">
+    <a id="btnSearch" class="btn btn-warning"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索</a>
+    <a id="btnAdd" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加</a>
+    <a id="btnSumit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 提交</a>
+    <a id="btnDelete" class="btn btn-danger"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 删除</a>
+</div>
+<div id="listBody">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <td width="50"><input id="chkAll" name="chkAll" type="checkbox"></td>
+                <td>用户名</td>
+                <td>姓名</td>
+                <td>备注</td>
+                <td width="200">最后登录时间</td>
+                <td width="200">创建时间</td>
+            </tr>
+        </thead>
+        <tbody id="tInfoList">
+            <tr>
+                <td><input id="cbx{UserId}" name="cbx{UserId}" value="{UserId}" type="checkbox"></td>
+                <td edittype="text" field="UserName" align="center">{UserName}</td>
+                <td edittype="text" field="RealName" align="center">{RealName}</td>
+                <td edittype="text" field="Remark" align="center">{Remark}</td>
+                <td align="center">{LastLoginTime}</td>
+                <td align="center">{CreatTime}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="pager"></div>
+</div>
+@section Script
+{
+    <script type="text/javascript">
+        function InitData() {//第一步初始化参数
+            $('#tInfoList').loadModel(); //加载模板,注意‘tInfoList’是table中tbody的id，‘{}’里的是字段名，最终将被替换成相应数据
+            ajaxLoad.url = "GetUserList?t=" + Math.random();
+            ajaxLoad.succfunc = function () { } //此事件是数据加载完成之后执行
+            //将指定单元格数据进行格式化
+            formatfunc.isEnable = function (data) { if (data == 'true') return '<a style="color:green">是</a>'; else return '<a style="color:red">否</a>'; };
+
+            //=================================需要编辑添加以下参数代码开始===========================
+            ajaxLoad.edit = true; //支持编辑
+            ajaxLoad.editUrl = '/Admin/SubmitUser?t=' + Math.random(); //编辑提交的网址
+            ajaxLoad.primaryField = 'UserId'; //编辑提交时提交的主键，根据此键值修改数据
+            //编辑提交回调函数，返回false不会重新加载数据
+            ajaxLoad.editOkCallback = function (data) { if (data.Status == 1) { okshow(); } else { exshow(data.Msg); return false; } }
+            $('#btnAdd').addBtn(); //添加默认按钮,此按钮添加一行文本框
+            $('#btnSumit').subBtn(); //添加默认按钮,此按钮提交编辑数据
+            //=================================需要编辑添加以上参数代码结束===========================
+            loadData(); //第二步加载数据,参数初始化结束加载数据
+        }
+
+        function loadData() {//加载数据,重新加载数据需调用此方法
+            ajaxLoad.parm = $('#toolsBar').getParams();
+            $('#tInfoList').bindModel(); //注意‘tInfoList’是table中tbody的id
+        }
+
+        $(document).ready(function () {
+            InitData(); //初始化数据
+            $("#btnSearch").click(loadData); //搜索
+            $(".sort").sort(loadData); //排序
+            deleteData();
+        });
+
+        function deleteData() {
+            $('#btnDelete').action('/Admin/DeleteUser', function (data) {
+                if (data.Status == 1) { okshow(data.Msg); loadData() } else { exshow(data.Msg); }
+            },'确定删除吗？');
+        }
+    </script>
+}

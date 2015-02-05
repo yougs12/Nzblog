@@ -1,0 +1,42 @@
+[33mcommit ddfbcf6d9cec419b1523ac12b35e9bbf52931522[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 23:43:06 2015 +0800
+
+    ...
+
+[33mcommit 57a8764a771571a8a37d96150a8aaaad83ff7aea[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 23:16:56 2015 +0800
+
+    删除多余文件
+
+[33mcommit dcea22311011b1fc4382c2af03fdd4bff3a41a2d[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 22:37:07 2015 +0800
+
+    忽略文件
+
+[33mcommit 821da83caea91b2a37824cb49743e57bb2f8e94d[m
+Merge: d689ed2 2b3fe2d
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 22:27:37 2015 +0800
+
+    Merge branch 'master' of github.com:zhengxueping/Nzblog
+
+[33mcommit 2b3fe2dc540a09204014bbbea25b4057ba9ee0a7[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 22:16:25 2015 +0800
+
+    Initial commit
+
+[33mcommit d689ed2bb221f38ca582e1c5d86ac9f4f5eb4b2e[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 22:12:45 2015 +0800
+
+    .
+
+[33mcommit bee884ddaa8372b8c534c7c24f6a5bb04ad005b9[m
+Author: zhengxueping <me@zhengxueping.com>
+Date:   Thu Feb 5 22:11:08 2015 +0800
+
+    nzblogV1.0

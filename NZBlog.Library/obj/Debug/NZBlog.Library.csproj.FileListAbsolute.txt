@@ -1,0 +1,8 @@
+E:\mywebapp\NZBlog\NZBlog.Library\bin\Debug\NZBlog.Library.dll
+E:\mywebapp\NZBlog\NZBlog.Library\bin\Debug\NZBlog.Library.pdb
+E:\mywebapp\NZBlog\NZBlog.Library\obj\Debug\NZBlog.Library.dll
+E:\mywebapp\NZBlog\NZBlog.Library\obj\Debug\NZBlog.Library.pdb
+E:\mywebsite\NZBlog\NZBlog.Library\bin\Debug\NZBlog.Library.dll
+E:\mywebsite\NZBlog\NZBlog.Library\bin\Debug\NZBlog.Library.pdb
+E:\mywebsite\NZBlog\NZBlog.Library\obj\Debug\NZBlog.Library.dll
+E:\mywebsite\NZBlog\NZBlog.Library\obj\Debug\NZBlog.Library.pdb
