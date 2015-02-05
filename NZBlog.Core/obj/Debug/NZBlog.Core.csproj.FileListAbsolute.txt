@@ -1,8 +1,0 @@
-E:\mywebapp\NZBlog\NZBlog.Core\bin\Debug\NZBlog.Core.dll
-E:\mywebapp\NZBlog\NZBlog.Core\bin\Debug\NZBlog.Core.pdb
-E:\mywebapp\NZBlog\NZBlog.Core\obj\Debug\NZBlog.Core.dll
-E:\mywebapp\NZBlog\NZBlog.Core\obj\Debug\NZBlog.Core.pdb
-E:\mywebsite\NZBlog\NZBlog.Core\bin\Debug\NZBlog.Core.dll
-E:\mywebsite\NZBlog\NZBlog.Core\bin\Debug\NZBlog.Core.pdb
-E:\mywebsite\NZBlog\NZBlog.Core\obj\Debug\NZBlog.Core.dll
-E:\mywebsite\NZBlog\NZBlog.Core\obj\Debug\NZBlog.Core.pdb
