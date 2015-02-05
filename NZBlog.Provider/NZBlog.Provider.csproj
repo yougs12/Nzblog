@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EE5C08C-9D75-4FC7-BBDB-56F4C3E854DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NZBlog.Provider</RootNamespace>
+    <AssemblyName>NZBlog.Provider</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlogDetailProvider.cs" />
+    <Compile Include="BlogTypeProvider.cs" />
+    <Compile Include="LableProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProvider.cs" />
+    <Compile Include="ZInfoMationProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NZBlog.Common\NZBlog.Common.csproj">
+      <Project>{8c829b6e-ec22-4a97-a8ca-48872b28cfe4}</Project>
+      <Name>NZBlog.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NZBlog.Core\NZBlog.Core.csproj">
+      <Project>{ee60e01a-8558-4137-9c61-75abb3f27c55}</Project>
+      <Name>NZBlog.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NZBlog.Entity\NZBlog.Entity.csproj">
+      <Project>{62368063-4b18-430e-a1aa-c708c7c413d6}</Project>
+      <Name>NZBlog.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NZBlog.Factory\NZBlog.Factory.csproj">
+      <Project>{b51add91-b094-4735-b2f4-3f136938ff85}</Project>
+      <Name>NZBlog.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NZBlog.Service\NZBlog.Service.csproj">
+      <Project>{69cc10e7-ea46-4d79-8888-afdf14f56727}</Project>
+      <Name>NZBlog.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

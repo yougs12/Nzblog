@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NZ 博客后台管理</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/admin.css" rel="stylesheet" />
+    <link href="~/Scripts/pager/pager.css" rel="stylesheet" />
+    <link href="~/Scripts/artDialog/skins/green.css" rel="stylesheet" />
+    @RenderSection("Header",false)
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="Blog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">博客管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("博客管理", "BlogDetailList", "Admin")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("博客分类", "BlogTypeList", "Admin")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("站点片段管理", "ZInfoMationList", "Admin")</li>
+                    <li>@Html.ActionLink("用户管理","UserList","Admin")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color:green;">欢迎进入NZ博客管理系统！</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">安全中心 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="javascript:openNew('/Account/ChangePassword','修改密码',800,200)">修改密码</a></li>
+                            <li>@Html.ActionLink("安全退出", "loginout", "account")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    @RenderBody()
+</body>
+</html>
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/artDialog/artDialog.js"></script>
+<script src="~/Scripts/artDialog/iframeTools.js"></script>
+<script src="~/Scripts/myGrid.js"></script>
+<script src="~/Scripts/pager/pager.js"></script>
+<script type="text/javascript">
+    $('nav').find('li').each(function () {
+        _li = $(this);
+        var link = _li.find('a').attr('href');
+        if (window.location.href.indexOf(link) > -1) {
+            _li.addClass('active')
+        } else { _li.removeClass('active'); }
+    });
+</script>
+@RenderSection("Script",false)

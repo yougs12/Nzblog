@@ -1,0 +1,163 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NZ博客管理员控制台登录</title>
+    <link href="~/Scripts/artDialog/skins/green.css" rel="stylesheet" />
+    <script type="text/javascript">
+        if (top.location != self.location) {
+            top.location.href = self.location;
+        }
+    </script>
+    <style type="text/css">
+        .login {
+            background-image: url(/Images/loginbg.jpg);
+            background-repeat: no-repeat;
+            height: 297px;
+            width: 465px;
+            overflow: hidden;
+            text-align: left;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        body {
+            background-color: #F5F6F8;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .selfbox {
+            padding-top: 70px;
+            padding-left: 120px;
+        }
+
+            .selfbox td {
+                padding-top: 8px;
+                padding-bottom: 8px;
+                font-size: 14px;
+                font-weight: bold;
+                color: #666666;
+            }
+
+        .inp1 {
+            border: 1px solid #CCCCCC;
+            height: 17px;
+            padding-top: 4px;
+            padding-right: 2px;
+            padding-bottom: 1px;
+            padding-left: 2px;
+            width: 133px;
+        }
+
+        .rem {
+            font-size: 12px;
+            font-weight: normal;
+            color: #FF0000;
+        }
+
+        .but1 {
+            background-image: url(/Images/loginbut.jpg);
+            background-repeat: no-repeat;
+            height: 26px;
+            width: 60px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+        }
+
+        .but2 {
+            background-color: #f9f9f9;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+        }
+
+        .footer {
+            font-size: 12px;
+            line-height: 22px;
+            color: #666666;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #999999;
+            width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 50px;
+        }
+
+            .footer a {
+                color: #333333;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <form id="form1" action="Login">
+        <div class="login">
+            <div class="selfbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="70">
+                            用户名:
+                        </td>
+                        <td>
+                            <input class="inp1" type="text" name="UserName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            密码:
+                        </td>
+                        <td>
+                            <input class="inp1" type="password" name="PassWord" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            验证码:
+                        </td>
+                        <td>
+                            <input class="inp1" type="text" name="ValiCode" id="txtVolidata" />&nbsp;
+                            <img src="/account/VerifyImage" onclick="this.src = '/account/VerifyImage?'" width="80" height="25" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <div class="rem">
+                                <input type="button" class="but1" value="" id="btnLogin" />&nbsp;
+                                <div style="padding-top: 9px; color: #999999">
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class=" footer">
+            版权所有:&nbsp;&nbsp;<a href="http://www.zhengxueping.com" target="_blank">郑雪平 me@zhengxueping.com<!--021-51978339--></a>
+        </div>
+    </form>
+</body>
+</html>
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/myGrid.js"></script>
+<script src="~/Scripts/artDialog/artDialog.js"></script>
+<script>
+    $(function() {
+        $('#btnLogin').mpost(function(data) {
+            if (data.Status == 1) { window.location.href = '/admin/index'; } else { exshow(data.Msg); }
+        });
+    })
+</script>

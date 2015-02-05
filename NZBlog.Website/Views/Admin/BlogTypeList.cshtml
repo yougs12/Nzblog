@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "博客分类管理";
+}
+@section Header
+{
+
+}
+<div id="toolsBar" class="toolbar">
+    <input type="text" name="TypeName" class="form-control input-Search" placeholder="">
+    <a id="btnSearch" class="btn btn-warning"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索</a>
+    <a id="btnAdd" onclick="openNew('/admin/BlogTypeEdit', '博客分类')" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加</a>
+    <a id="btnDelete" class="btn btn-danger"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 删除</a>
+</div>
+<div id="listBody">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <td width="50"><input id="chkAll" name="chkAll" type="checkbox"></td>
+                <td>分类名称</td>
+                <td>父类名称</td>
+                <td>是否推荐</td>
+            </tr>
+        </thead>
+        <tbody id="tInfoList">
+            <tr>
+                <td><label><input id="cbx{TypeId}" name="cbx{TypeId}" value="{TypeId}" type="checkbox"> {TypeId}</label></td>
+                <td><a href="javascript:openNew('/admin/BlogTypeEdit/{TypeId}','博客分类')">{TypeName}</a></td>
+                <td>{ParentTypeName}</td>
+                <td formatdata="IsDefautlt">{IsDefautlt}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="pager"></div>
+</div>
+@section Script
+{
+    <script type="text/javascript">
+        function InitData() {//第一步初始化参数
+            $('#tInfoList').loadModel(); //加载模板
+            ajaxLoad.url = "GetBlogTypeList?t=" + Math.random();
+            loadData(); //第二步加载数据,参数初始化结束加载数据
+
+            formatfunc.IsDefautlt = function (data) { if (data == 'true') return '<a style="color:green">是</a>'; else return '<a style="color:red">否</a>'; };
+        }
+
+        function loadData() {//加载数据,重新加载数据需调用此方法
+            ajaxLoad.parm = $('#toolsBar').getParams();
+            $('#tInfoList').bindModel();
+        }
+
+        $(document).ready(function () {
+            InitData(); //初始化数据
+            $("#btnSearch").click(loadData); //搜索
+            deleteData();
+        });
+
+        function deleteData() {
+            $('#btnDelete').action('/Admin/DeleteBlogType', function (data) {
+                if (data.Status == 1) { okshow(data.Msg); loadData() } else { exshow(data.Msg); }
+            }, '确定删除吗？');
+        }
+    </script>
+}

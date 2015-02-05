@@ -1,0 +1,14 @@
+E:\mywebapp\NZBlog\NZBlog.Entity\bin\Debug\NZBlog.Entity.dll
+E:\mywebapp\NZBlog\NZBlog.Entity\bin\Debug\NZBlog.Entity.pdb
+E:\mywebapp\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.dll
+E:\mywebapp\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.pdb
+E:\mywebapp\NZBlog\NZBlog.Entity\bin\Debug\Dapper.dll
+E:\mywebapp\NZBlog\NZBlog.Entity\bin\Debug\Dapper.pdb
+E:\mywebapp\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.csprojResolveAssemblyReference.cache
+E:\mywebsite\NZBlog\NZBlog.Entity\bin\Debug\NZBlog.Entity.dll
+E:\mywebsite\NZBlog\NZBlog.Entity\bin\Debug\NZBlog.Entity.pdb
+E:\mywebsite\NZBlog\NZBlog.Entity\bin\Debug\Dapper.dll
+E:\mywebsite\NZBlog\NZBlog.Entity\bin\Debug\Dapper.pdb
+E:\mywebsite\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.csprojResolveAssemblyReference.cache
+E:\mywebsite\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.dll
+E:\mywebsite\NZBlog\NZBlog.Entity\obj\Debug\NZBlog.Entity.pdb

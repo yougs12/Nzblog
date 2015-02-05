@@ -1,0 +1,6 @@
+﻿.toolbar{background-color: #f5f5f5;padding: 8px 5px;float: left;width: 100%;}
+.input-Search{ width: 180px;}
+.toolbar a,input { float: left;margin-left: 10px;}
+#listBody { padding: 5px;}
+#listBody thead td { text-align: center;font-weight: bold;background-color: #1C9C69;color: white;}
+.dropdown-toggle{cursor:pointer;}

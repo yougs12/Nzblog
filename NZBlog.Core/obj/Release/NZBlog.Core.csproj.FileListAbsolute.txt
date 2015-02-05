@@ -1,0 +1,4 @@
+E:\mywebsite\NZBlog\NZBlog.Core\bin\Release\NZBlog.Core.dll
+E:\mywebsite\NZBlog\NZBlog.Core\bin\Release\NZBlog.Core.pdb
+E:\mywebsite\NZBlog\NZBlog.Core\obj\Release\NZBlog.Core.dll
+E:\mywebsite\NZBlog\NZBlog.Core\obj\Release\NZBlog.Core.pdb

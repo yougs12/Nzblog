@@ -1,0 +1,4 @@
+E:\mywebsite\NZBlog\Dapper\bin\Release\Dapper.dll
+E:\mywebsite\NZBlog\Dapper\bin\Release\Dapper.pdb
+E:\mywebsite\NZBlog\Dapper\obj\Release\Dapper.dll
+E:\mywebsite\NZBlog\Dapper\obj\Release\Dapper.pdb

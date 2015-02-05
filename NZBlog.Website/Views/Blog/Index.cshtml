@@ -1,0 +1,38 @@
+﻿@model NZBlog.Website.Models.BlogViewModel
+@{
+    ViewBag.Title = "郑雪平的博客";
+}
+@{
+    int itemIndex=0;
+    string className = "article-next";
+    foreach (var item in Model.BlogList)
+    {
+<section class="article @{if(itemIndex!=0){@className}}">
+    <div class="row">
+        <h4><a href="/blog/@item.BlogId">@item.Title</a></h4>
+        <div class="posthead">
+            <div class="col-xs-10"><a><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> @item.TypeName</a></div>
+            <div class="col-xs-2 list-right"><a><span class="glyphicon glyphicon-time"></span> @item.CreatTimes.ToString("yyyy-MM-dd")</a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            @MvcHtmlString.Create(item.BlogContent.CutHtml(500))
+        </div>
+        <div class="article-foot">
+            <div class="col-xs-2"><a><span class="glyphicon glyphicon-volume-up"></span> <span class="ds-thread-count" data-thread-key="@item.BlogId" data-count-type="comments"></span></a></div>
+            <span class="glyphicon glyphicon-tags tags"></span> 
+            <span class="cat-item">
+                @foreach(var lable in Model.Lables.Where(l=>l.BlogId==item.BlogId))
+                {
+                <a>@lable.LabName</a>
+                }
+            </span>
+            <a target="_blank" href="/blog/@item.BlogId" class="right-float">查看全文》</a>
+        </div>
+    </div>
+</section>
+        itemIndex++;
+    }
+}
+@Model.PageBtn
