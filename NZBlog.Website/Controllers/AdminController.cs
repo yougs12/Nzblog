@@ -172,7 +172,8 @@ namespace NZBlog.Website.Controllers
             ParentTypeList.Find(a => a.Value == model.TypeId.ToString()).Selected = true;
             ViewBag.TypeId = ParentTypeList;
             int total1;
-            model.Lables = new LableProvider().GetPageList(new LablesParam { BlogId = model.BlogId }, 1, 10, out total1).Select(l=>l.LabName).SumToString();
+            if (id != null)
+                model.Lables = new LableProvider().GetPageList(new LablesParam { BlogId = model.BlogId }, 1, 10, out total1).Select(l => l.LabName).SumToString();
             return View(model);
         }
 
