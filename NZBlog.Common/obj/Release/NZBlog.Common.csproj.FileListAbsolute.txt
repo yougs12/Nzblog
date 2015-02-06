@@ -1,4 +1,0 @@
-E:\mywebsite\NZBlog\NZBlog.Common\bin\Release\NZBlog.Common.dll
-E:\mywebsite\NZBlog\NZBlog.Common\bin\Release\NZBlog.Common.pdb
-E:\mywebsite\NZBlog\NZBlog.Common\obj\Release\NZBlog.Common.dll
-E:\mywebsite\NZBlog\NZBlog.Common\obj\Release\NZBlog.Common.pdb

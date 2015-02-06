@@ -1,9 +1,0 @@
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\NZBlog.Service.dll
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\NZBlog.Service.pdb
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\NZBlog.Entity.dll
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\Dapper.dll
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\NZBlog.Entity.pdb
-E:\mywebsite\NZBlog\NZBlog.Service\bin\Release\Dapper.pdb
-E:\mywebsite\NZBlog\NZBlog.Service\obj\Release\NZBlog.Service.csprojResolveAssemblyReference.cache
-E:\mywebsite\NZBlog\NZBlog.Service\obj\Release\NZBlog.Service.dll
-E:\mywebsite\NZBlog\NZBlog.Service\obj\Release\NZBlog.Service.pdb
