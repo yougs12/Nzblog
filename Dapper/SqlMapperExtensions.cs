@@ -25,7 +25,8 @@ namespace Dapper
 
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> KeyProperties = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> TypeProperties = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
-		private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> ComputedProperties = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>(); 
+		private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> ComputedProperties = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
+        private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> NIProperties = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, string> GetQueries = new ConcurrentDictionary<RuntimeTypeHandle, string>();
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, string> TypeTableName = new ConcurrentDictionary<RuntimeTypeHandle, string>();
 
@@ -47,6 +48,19 @@ namespace Dapper
 			ComputedProperties[type.TypeHandle] = computedProperties;
 			return computedProperties;
 		}
+        private static IEnumerable<PropertyInfo> NIPropertiesCache(Type type)
+        {
+            IEnumerable<PropertyInfo> pi;
+            if (NIProperties.TryGetValue(type.TypeHandle, out pi))
+            {
+                return pi;
+            }
+
+            var nIProperties = TypePropertiesCache(type).Where(p => p.GetCustomAttributes(true).Any(a => a is NIAttribute)).ToList();
+
+            NIProperties[type.TypeHandle] = nIProperties;
+            return nIProperties;
+        }
         private static IEnumerable<PropertyInfo> KeyPropertiesCache(Type type)
         {
 
@@ -192,7 +206,8 @@ namespace Dapper
 			var allProperties = TypePropertiesCache(type);
             var keyProperties = KeyPropertiesCache(type);
 			var computedProperties = ComputedPropertiesCache(type);
-			var allPropertiesExceptKeyAndComputed = allProperties.Except(keyProperties.Union(computedProperties));
+            var nIProperties = NIPropertiesCache(type);
+            var allPropertiesExceptKeyAndComputed = allProperties.Except(keyProperties.Union(computedProperties).Union(nIProperties));
 
             for (var i = 0; i < allPropertiesExceptKeyAndComputed.Count(); i++)
             {
@@ -512,6 +527,11 @@ namespace Dapper
 	public class ComputedAttribute : Attribute
 	{
 	}
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class NIAttribute : Attribute
+    {
+    }
 }
 
 public interface ISqlAdapter

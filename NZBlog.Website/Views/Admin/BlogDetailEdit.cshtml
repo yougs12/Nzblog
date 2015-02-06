@@ -73,9 +73,12 @@
         <div class="col-sm-10" id="lableList">
             <input type="text" id="txtLable" class="form-control" /> <a id="btnAddLable" class="btn btn-success btn-xs">添加</a>
             @{
+                if (!string.IsNullOrEmpty(Model.Lables))
+                { 
                 foreach (var item in Model.Lables.Split(','))
                 {
                     <span class="label label-primary">@item <input type="hidden" name="Lables" value="@item" /> <span aria-hidden="true" onclick="deleteLable(this)">&times;</span></span>
+                }
                 }
             }
         </div>

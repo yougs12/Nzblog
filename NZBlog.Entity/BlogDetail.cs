@@ -26,6 +26,7 @@ namespace NZBlog.Entity
 
         public int SortNum { get; set; }
 
+        [NI]
         public string TypeName { get; set; }
 
         [Computed]

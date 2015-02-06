@@ -182,9 +182,10 @@ namespace NZBlog.Website.Controllers
         [ValidateInput(false)]
         public ActionResult SubmitBlogDetail(BlogDetail blogDetail)
         {
+            blogDetail.CreatTimes = DateTime.Now;
             blogDetail.Lables = Request.Form["Lables"];
             BlogDetailProvider bll = new BlogDetailProvider();
-            return SubmitData(blogDetail.TypeId != 0, blogDetail, bll.UpdateBlog, bll.AddBlog);
+            return SubmitData(blogDetail.BlogId != 0, blogDetail, bll.UpdateBlog, bll.AddBlog);
         }
 
         public ActionResult DeleteBlogDetail(string ids)

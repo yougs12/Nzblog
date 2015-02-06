@@ -36,7 +36,7 @@
         </p>
     </div>
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="1" data-title="如何在EF中直接运行SQL命令" data-url="/blog/1"></div>
+    <div class="ds-thread" data-thread-key="@Model.BlogId" data-title="@Model.Title" data-url="/blog/@Model.BlogId"></div>
     <!-- 多说评论框 end -->
 </section>
 @Html.Partial("_Aticle_Under")
