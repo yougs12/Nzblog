@@ -16,19 +16,19 @@ namespace NZBlog.Website
                "Default3", 
                "{pageIndex}", 
                new { controller = "Blog", action = "Index", pageIndex = UrlParameter.Optional }, // Parameter defaults
-               new { pageIndex = @"[\d]" }
+               new { pageIndex = @"[\d]+" }
            );
             routes.MapRoute(
                "Default2", // Route name
                "blogList/{typeid}/{pageIndex}", // URL with parameters
                new { controller = "Blog", action = "GetTypeList", typeid = 0, pageIndex = UrlParameter.Optional }, // Parameter defaults
-               new { typeid = @"[\d]"}
+               new { typeid = @"[\d]+"}
            );
             routes.MapRoute(
                "Default1", 
                "blog/{id}", 
                new { controller = "Blog", action = "BlogDetail", id = UrlParameter.Optional }, // Parameter defaults
-               new { id = @"[\d]" }
+               new { id = @"[\d]+" }
            );
             routes.MapRoute(
                 name: "Default",
