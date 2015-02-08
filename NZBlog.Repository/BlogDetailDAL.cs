@@ -38,10 +38,10 @@ namespace NZBlog.Repository
 
         public List<BlogDetail> GetBlogList(BlogDetailParam param, int pageIndex, int pageSize, out int total)
         {
-            query.Select("t.BlogId,t.TypeId,t.Title,t.BlogContent,t.ReadTimes,t.IsSendDefault,t.CreatTimes,t.IsRec,t.SortNum,t1.TypeName").Join("BlogType t1 on t.TypeId=t1.TypeId").OrderBy("IsRec desc,SortNum desc,BlogId desc");
+            query.Select("t.BlogId,t.TypeId,t.Title,t.BlogContent,t.ReadTimes,t.IsSendDefault,t.CreatTimes,t.IsRec,t.SortNum,t1.TypeName").Join("BlogType t1 on t.TypeId=t1.TypeId").LeftJoin("BlogType t2 on t2.TypeId=t1.ParentId").OrderBy("IsRec desc,SortNum desc,BlogId desc");
             if (param.TypeId != 0)
             {
-                query.Where("t.TypeId=@TypeId", new { TypeId = param.TypeId });
+                query.Where("t.TypeId=@TypeId or t2.TypeId=@TypeId", new { TypeId = param.TypeId });
             }
 
             if (!string.IsNullOrWhiteSpace(param.Title))

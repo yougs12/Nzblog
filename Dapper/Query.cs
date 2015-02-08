@@ -186,15 +186,16 @@ namespace Dapper
             int minNum = _pageSize*(_pageIndex - 1);
             int maxNum = _pageIndex*_pageSize + 1;
             rawSql = rawSql.Replace(" /**orderby**/ ", "");
+            string cntRawSql = rawSql;
             this.Select(" row_number() over (/**orderby**/) as rowNum");
             rawSql = "select * from (" + rawSql + ") a where rowNum>@minNum and rowNum<@maxNum";
             if (rawSql.Contains(" /**where**/ "))
             {
-                rawSql += "\nselect @cnt= count(1) from " + TableName + " t /**where**/ ";
+                rawSql += "\nselect @cnt= count(1) from (" + cntRawSql + ") a";
             }
             else
             {
-                rawSql += "\nselect @cnt= count(1) from " + TableName + " ";
+                rawSql += "\nselect @cnt= count(1) from (" + cntRawSql + ") a";
             }
             _parameters.Add("@minNum", minNum, DbType.Int32);
             _parameters.Add("@maxNum", maxNum, DbType.Int32);
