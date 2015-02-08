@@ -124,19 +124,7 @@ function getModelData(json) {//替换模板获取单行文本
     });
     return NewData;
 }
-function formatData() {//格式化数据
-    for (var callFuncName in formatfunc) {
-        ajaxLoad.GridBody.find('[formatData]').each(function () {
-            var data = $.trim($(this).text());
-            var funcName = $(this).attr('formatData');
-            if (funcName && funcName != '' && callFuncName == funcName) {
-                var callfunc = formatfunc[callFuncName];
-                var resultData = callfunc(data);
-                if (resultData) $(this).html(resultData);
-            }
-        });
-    }
-}
+
 function getModelChildrenData(json, startData, arrData) {//替换模板获取单行文本（子级数据）
     var rer = /[\{\}]/g;
     var NewData = startData;
@@ -179,6 +167,19 @@ function GetHeng(cnt) {//获取子级字段（本函数用于分辨级别层）
         heng += '\\.';
     }
     return heng;
+}
+function formatData() {//格式化数据
+    for (var callFuncName in formatfunc) {
+        ajaxLoad.GridBody.find('[formatData]').each(function () {
+            var data = $.trim($(this).text());
+            var funcName = $(this).attr('formatData');
+            if (funcName && funcName != '' && callFuncName == funcName) {
+                var callfunc = formatfunc[callFuncName];
+                var resultData = callfunc(data);
+                if (resultData) $(this).html(resultData);
+            }
+        });
+    }
 }
 //全选
 function checkAll(obj) {
