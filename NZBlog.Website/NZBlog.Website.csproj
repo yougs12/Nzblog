@@ -672,6 +672,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\wode.pubxml" />
+    <Content Include="Scripts\EzGrid.Extension.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
