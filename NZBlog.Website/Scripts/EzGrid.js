@@ -5,6 +5,7 @@ formatfunc = {};//格式化方法命名空间
 ajaxLoad.SortField = '';//排序字段名
 ajaxLoad.IsAsc = false;//是否倒序排列，默认倒序，非倒序设为true
 ajaxLoad.parm = {};//加载数据时传的参数键值对
+ajaxLoad.isnotShow = false;
 //加入jquery对象扩展方法
 jQuery.fn.extend({
     loadModel: function () {//加载模板
@@ -24,7 +25,7 @@ jQuery.fn.extend({
     bindModel: function () {//绑定数据
         LoadPage(1);
     },
-    action: function (url, callback, confirmMsg, isnotShow) {//点击列表上的按钮将会发出请求，并将选中checkbox的value提交
+    action: function (url, callback, confirmMsg) {//点击列表上的按钮将会发出请求，并将选中checkbox的value提交
         if (url.indexOf('?') < 0) { url += '?' + Math.random(); } else { url += '&' + Math.random(); }
         this.click(function () {
             var ids = GetGridCheckIds();
@@ -40,7 +41,7 @@ jQuery.fn.extend({
                 if (status == 0) {
                     exshow(data);
                 } else { callback(data); }
-            }, isnotShow);
+            });
         });
     },
     trim: function () {//去除文本框输入值的两边空白字符
@@ -236,7 +237,7 @@ function SortTable(o) {
 }
 
 $.extend({//ajax请求封装（此处加上了验证，并有提示和异常捕获）
-    mpost: function (url, parm, callback, isnotShow) {
+    mpost: function (url, parm, callback) {
         var status = 0; //状态消息
         var result = ''
         if (ajaxLoad.validataObj)//是否验证
@@ -249,19 +250,19 @@ $.extend({//ajax请求封装（此处加上了验证，并有提示和异常捕�
             type: "POST",
             data: parm, //设置parm 
             beforeSend: function () {
-                if (!isnotShow)//加载提示
+                if (!ajaxLoad.isnotShow)//加载提示
                     loadingshow();
             },
             success: function (data) {
                 status = 1; //状态消息成功返回
-                if (!isnotShow) {
+                if (!ajaxLoad.isnotShow) {
                     var dialog = art.dialog.get('artmsg');//关闭加载提示
                     if (dialog) dialog.close();
                 }
                 callback(data, status);
             },
             error: function (xmlHttpRequest, error) {
-                if (!isnotShow) {
+                if (!ajaxLoad.isnotShow) {
                     var dialog = art.dialog.get('artmsg');//关闭加载提示
                     if (dialog) dialog.close();
                 }

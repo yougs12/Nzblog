@@ -63,7 +63,7 @@ $.fn.extend({
 			}
 		})
 	},
-	mpost: function (callback, form, isnotShow) {//明细编辑页面提交数据的方法
+	mpost: function (callback, form) {//明细编辑页面提交数据的方法
 		this.click(function () {
 			$(this).attr('disabled', true);
 			var _btn = $(this);
@@ -74,7 +74,7 @@ $.fn.extend({
 				if (status == 0) {
 					exshow(data);
 				} else { callback(data); }
-			}, isnotShow);
+			});
 		});
 	},
 })
