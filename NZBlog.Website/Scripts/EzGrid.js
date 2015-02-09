@@ -162,7 +162,7 @@ function GetChildrenData(lastTr, lev, json) {//装载子级数据，【bug待解
         })
     }
 }
-function GetHeng(cnt) {//获取子级字段（本函数用于分辨级别层）
+function GetHeng(cnt) {//获取子级字段（用于分辨层级别）
     var heng = '';
     for (var i = 0; i < cnt-1; i++) {
         heng += '\\.';
