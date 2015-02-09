@@ -197,45 +197,6 @@ function GetGridCheckIds() {
     return chkArr;
 }
 
-function okshow(alertContent, Callback, closeCallback) {
-    if (!alertContent) alertContent = '操作成功！';
-    myAlert('succeed', '', alertContent, Callback, closeCallback);
-}
-function exshow(alertContent, Callback, closeCallback) {
-    if (!alertContent) alertContent = '操作失败！';
-    myAlert('error', '错误提示', alertContent, Callback, closeCallback);
-}
-function warnshow(alertContent, Callback, closeCallback) {
-    if (!alertContent) alertContent = '操作有误！';
-    myAlert('warning', '系统提示', alertContent, Callback, closeCallback);
-}
-function loadingshow(alertContent, Callback, closeCallback) {
-    if (!alertContent) alertContent = '请稍后，数据正在处理...';
-    myAlert('loading.gif', '等待提示', alertContent, Callback, closeCallback);
-}
-function myAlert(sicon, stitle, scontent, callback, closeback) {
-    if (stitle == undefined || stitle == "") stitle = "";
-    art.dialog({
-        width: 400,
-        height: 150,
-        id: 'artmsg',
-        padding: 0,
-        title: stitle,
-        content: "<div style=\"width:380px;overflow:hidden;overflow-y:auto;white-space:normal;word-break:break-all;\">" + scontent + "</div>",
-        icon: sicon,
-        lock: true,
-        ok: function () { if (callback != undefined) { callback(); } },
-        close: function () { if (closeback != undefined) { closeback(); } }
-    });
-}
-function openNew(url, title, width, height, closeCallback) {
-    if (!width) width = 800;
-    if (!height) height = 500;
-    if (!closeCallback) closeCallback = function () { };
-    if (url.indexOf('?') < 0) { url += '?' + Math.random(); } else { url += '&' + Math.random(); }
-    art.dialog.open(url, { title: title, lock: true, width: width, height: height, close: closeCallback });
-}
-
 document.onkeydown = function (event) {//回车搜索
     var e = event || window.event || arguments.callee.caller.arguments[0];
     if (e && e.keyCode == 13) { // enter 键 要做的事情
@@ -276,9 +237,9 @@ function SortTable(o) {
 
 $.extend({//ajax请求封装（此处加上了验证，并有提示和异常捕获）
     mpost: function (url, parm, callback, isnotShow) {
-        var status = 0;
+        var status = 0; //状态消息
         var result = ''
-        if (ajaxLoad.validataObj)
+        if (ajaxLoad.validataObj)//是否验证
             result = ajaxLoad.validata();
         if (result != '') { callback(result, status); return; }
         $.ajax({
@@ -288,23 +249,23 @@ $.extend({//ajax请求封装（此处加上了验证，并有提示和异常捕�
             type: "POST",
             data: parm, //设置parm 
             beforeSend: function () {
-                if (!isnotShow)
+                if (!isnotShow)//加载提示
                     loadingshow();
             },
             success: function (data) {
-                status = 1;
+                status = 1; //状态消息成功返回
                 if (!isnotShow) {
-                    var dialog = art.dialog.get('artmsg');
+                    var dialog = art.dialog.get('artmsg');//关闭加载提示
                     if (dialog) dialog.close();
                 }
                 callback(data, status);
             },
             error: function (xmlHttpRequest, error) {
                 if (!isnotShow) {
-                    var dialog = art.dialog.get('artmsg');
+                    var dialog = art.dialog.get('artmsg');//关闭加载提示
                     if (dialog) dialog.close();
                 }
-                result = "Exception:" + error;
+                result = "Exception:" + error;//发生异常
                 callback(result, status);
             }
         })

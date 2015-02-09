@@ -249,6 +249,7 @@
     <Content Include="Scripts\artDialog\skins\simple.css" />
     <Content Include="Scripts\artDialog\skins\twitter.css" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dialogExtend.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\EzGrid.js" />
