@@ -12,17 +12,22 @@ function warnshow(alertContent, Callback, closeCallback) {
 }
 function loadingshow(alertContent, Callback, closeCallback) {
     if (!alertContent) alertContent = '请稍后，数据正在处理...';
-    myAlert('loading.gif', '等待提示', alertContent, Callback, closeCallback);
+    myAlert('loading', '系统提示', alertContent, Callback, closeCallback);
 }
 function myAlert(sicon, stitle, scontent, callback, closeback) {
     if (stitle == undefined || stitle == "") stitle = "";
+    var content = "<div style=\"width:380px;overflow:hidden;overflow-y:auto;white-space:normal;word-break:break-all;\">" + scontent + "</div>";
+    if (sicon == 'loading') {
+        content = "<div style=\"width:380px;text-align:center;overflow:hidden;overflow-y:auto;white-space:normal;word-break:break-all;\"><img src='/Images/loading.gif'/> " + scontent + "</div>";
+        sicon = '';
+    }
     art.dialog({
         width: 400,
         height: 150,
         id: 'artmsg',
         padding: 0,
         title: stitle,
-        content: "<div style=\"width:380px;overflow:hidden;overflow-y:auto;white-space:normal;word-break:break-all;\">" + scontent + "</div>",
+        content: content,
         icon: sicon,
         lock: true,
         ok: function () { if (callback != undefined) { callback(); } },
