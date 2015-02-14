@@ -266,6 +266,7 @@ $.extend({//ajax请求封装（此处加上了验证，并有提示和异常捕�
                     var dialog = art.dialog.get('artmsg');//关闭加载提示
                     if (dialog) dialog.close();
                 }
+                if (error == 'error') error == '请求出现异常！';
                 result = "Exception:" + error;//发生异常
                 callback(result, status);
             }
