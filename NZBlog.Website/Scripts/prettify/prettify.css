@@ -31,6 +31,7 @@
             .right-page ul {
                 -webkit-padding-start: 0px;
                 list-style-type: none;
+                padding-left: 0px;
             }
             .right-page li {
                 margin-top: 5px;
