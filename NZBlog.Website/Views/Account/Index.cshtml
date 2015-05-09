@@ -157,6 +157,12 @@
 <script src="~/Scripts/artDialog/artDialog.js"></script>
 <script src="~/Scripts/dialogExtend.js"></script>
 <script>
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) { // enter 键
+            $('#btnLogin').click();
+        }
+    };
     $(function() {
         $('#btnLogin').mpost(function(data) {
             if (data.Status == 1) { window.location.href = '/admin/index'; } else { exshow(data.Msg); }
